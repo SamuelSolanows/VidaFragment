@@ -33,6 +33,7 @@ class Fragment : Fragment() {
         return inflater.inflate(R.layout.fragment_, container, false)
 
     }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {          //Crea la logica del fragmento
         super.onActivityCreated(savedInstanceState)
         Log.e("ciclo", "onActivityCreated")
@@ -60,6 +61,12 @@ class Fragment : Fragment() {
     override fun onDestroyView() {       //Destruye la vista del fragmento
         super.onDestroyView()
         Log.e("ciclo", "onDestroyView")
+    }
+
+    override fun onDetach() {
+        Log.e("ciclo", "Desanclado F1")
+
+        super.onDetach()
     }
 
     companion object {
