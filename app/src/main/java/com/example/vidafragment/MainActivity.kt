@@ -3,12 +3,37 @@ package com.example.vidafragment
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
+import com.example.vidafragment.Fragments.Fragment2
+import com.example.vidafragment.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         Log.e("actividad", "onCreate")
+
+        binding.apply {
+            button.setOnClickListener {
+                CambiaraFragment2()
+            }
+
+        }
+    }
+
+    fun CambiaraFragment2() {
+        supportFragmentManager.commit {
+            replace(R.id.fragmentContainerView, Fragment2())
+        }
+    }
+
+    fun CambiaraFragment1() {
+        supportFragmentManager.commit {
+            replace(R.id.fragmentContainerView, Fragment())
+        }
     }
 
     override fun onStart() {
